@@ -1,4 +1,4 @@
-## INDEL notation converter from (A -> "-") to (GA -> G) including leading base (proper VCF notation).
+## VCF indel notation converter from (A -> "-") to (GA -> G) including leading base (proper VCF notation).
 
 #### For info please contact me: or.yaacov@mail.huji.ac.il
 
