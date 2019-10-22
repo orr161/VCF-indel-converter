@@ -16,7 +16,7 @@ findbase <- function(chr, pos, len=0) {
 read1 <- read.table(file = filePath, col.names = c("chr", "pos","name", "ref", "alt")
                     , colClasses=c("ref"="character", "alt"="character"))
 
-#Convert the format
+#Converts the format
 for(i in 1:nrow(read1)) {
     row <- read1[i,]
     alt <- read1[i,5]
@@ -24,22 +24,23 @@ for(i in 1:nrow(read1)) {
     pos <- read1[i,2]
     chr <- read1[i,1]
     if (alt == "-") {
-        Len= nchar(ref)
-        leadingPos = (pos-Len)
+        Len= 1
+        leadingPos = (pos-1)
         read1[i,2] <- leadingPos
-        leading = findbase(toString(chr), leadingPos, len=(Len-1))
+        leading = findbase(toString(chr), leadingPos)
         read1[i,5] = leading
         read1[i,4] = paste(leading, ref, sep="")
         }
     else if (ref == "-") {
-        Len= nchar(alt)
-        leadingPos = (pos-Len)
+        Len= 1
+        leadingPos = (pos-1)
         read1[i,2] = leadingPos
-        leading = findbase(toString(chr), leadingPos, len=(Len-1))
+        leading = findbase(toString(chr), leadingPos)
         read1[i,4] = leading
         read1[i,5] = paste(leading, alt, sep="")
     }
 }
+
 
 #Save output:
 write.table(read1,file=outPut, sep = "\t", quote = FALSE, col.names = F, row.names = F)
