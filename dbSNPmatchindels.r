@@ -19,7 +19,7 @@ dbsnp<- fread(dbsnp_file)
 # find the SNP based on position or Rsid:
 findsnp <- function(Chr, Pos, Rs= 0) {
     #find first match
-    idx<-which((dbsnp[,1] == Chr) & (dbsnp[,2] == Pos ) | (dbsnp[,3] == Rs))[1]
+    idx<-which((dbsnp[,1] == Chr) & (dbsnp[,2] == Pos ) & (dbsnp[,3] == Rs))[1]
     dbRef<- dbsnp[idx,4]
     dbAlt<- dbsnp[idx,5]
     if (is.na(dbRef) | is.na(dbAlt)) {
